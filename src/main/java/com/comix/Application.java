@@ -4,29 +4,22 @@ import java.sql.DriverManager;
 import java.sql.*;
 import jave.sql.Statement;
 
+import com.comix.db.DBConnection;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 public class Application {
 
     public static void main(String[] args) {
-            System.out.println("Hello world");
-
+        try {
+            Connection conn = DBConnection.connect();
+            System.out.println("Opened database successfully");
+        } catch (IOException | SQLException | IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+ 
     }
-    
-
-// public class PostgreSQLJDBC {
-//    public static void main(String args[]) {
-//       Connection c = null;
-//       try {
-//          Class.forName("org.postgresql.Driver");
-//          c = DriverManager
-//             .getConnection("jdbc:postgresql://localhost:5432/testdb",
-//             "newtest", "555");
-//       } catch (Exception e) {
-//          e.printStackTrace();
-//          System.err.println(e.getClass().getName()+": "+e.getMessage());
-//          System.exit(0);
-//       }
-//       System.out.println("Opened database successfully");
-//    }
-// }
 
 }
