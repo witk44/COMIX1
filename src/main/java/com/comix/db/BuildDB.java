@@ -8,7 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import com.opencsv.CSVParser;
+import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
 
 public class BuildDB {
     public static void Build(Connection connection){
@@ -37,16 +40,18 @@ public class BuildDB {
 
         try{
             FileReader fileReader = new FileReader(filePath);
-            CSVReader csvReader = new CSVReader(fileReader);
+            CSVParser parser = new CSVParserBuilder().withSeparator(',').build();
+            CSVReader csvReader = new CSVReaderBuilder(fileReader).withCSVParser(parser).build();
             String [] comic;
             csvReader.readNext();
             csvReader.readNext();
             csvReader.readNext();
             while((comic = csvReader.readNext()) != null){
                 Statement sql = connection.createStatement();
-                // connection.setAutoCommit(true);
-                // String sql_stmt = "INSERT INTO COMIX VALUES () VALUES comic[1], comic[2]";
-                // sql.executeUpdate(sql_stmt);
+                connection.setAutoCommit(true);
+                String sql_stmt = "INSERT INTO comix VALUES (series, issue, full_title, variant, publisher, release_date, format, added_date, creators) VALUES  (" + comic[0] + "," + comic[1] + "," + comic[2] + "," + comic[3] + "," + comic[4] + "," + comic[5] + "," + comic[6] + "," + comic[7] + "," + comic[8] + ");";
+                sql.executeUpdate(sql_stmt);
+                // System.out.println(comic[3]);
                 sql.close();
             }
             csvReader.close();
