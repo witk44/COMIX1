@@ -18,6 +18,7 @@ public class Application {
             Connection conn = DBConnection.connect();
             System.out.println("Opened database successfully");
             BuildDB.Build(conn);
+            System.out.println("Built db");
         } catch (IOException | SQLException | IllegalArgumentException e) {
             e.printStackTrace();
         }
