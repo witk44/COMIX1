@@ -1,6 +1,8 @@
 package com.comix;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.*;
+import jave.sql.Statement;
 
 import com.comix.db.DBConnection;
 
@@ -17,7 +19,7 @@ public class Application {
         } catch (IOException | SQLException | IllegalArgumentException e) {
             e.printStackTrace();
         }
-        
+ 
     }
 
 }
