@@ -13,11 +13,6 @@ import com.opencsv.CSVReader;
 public class BuildDB {
     public static void Build(Connection connection){
         String filePath = "C:\\Users\\Connor Witkiewicz\\COMIX1\\comics.csv";
-        try{
-            Statement sql = connection.createStatement();
-        }catch (SQLException ie){
-            ie.printStackTrace();
-        }
         
 
         try{
@@ -25,7 +20,11 @@ public class BuildDB {
             CSVReader csvReader = new CSVReader(fileReader);
             String [] comic;
             while((comic = csvReader.readNext()) != null){
-                // System.out.println(comic[1]);
+                Statement sql = connection.createStatement();
+                // connection.setAutoCommit(true);
+                // String sql_stmt = "INSERT INTO ";
+                // sql.executeUpdate(sql_stmt);
+                sql.close();
             }
             csvReader.close();
         }catch(Exception ie){
