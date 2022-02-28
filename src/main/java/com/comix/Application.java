@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.*;
 import java.sql.Statement;
 
+import com.comix.db.BuildDB;
 import com.comix.db.DBConnection;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ public class Application {
         try {
             Connection conn = DBConnection.connect();
             System.out.println("Opened database successfully");
+            BuildDB.Build();
         } catch (IOException | SQLException | IllegalArgumentException e) {
             e.printStackTrace();
         }
