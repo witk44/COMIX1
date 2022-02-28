@@ -1,5 +1,0 @@
-hostname: localhost
-port: 5432
-database: <dbname>
-user: <username>
-password: <password>

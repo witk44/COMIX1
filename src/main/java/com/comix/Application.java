@@ -2,7 +2,7 @@ package com.comix;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
-import jave.sql.Statement;
+import java.sql.Statement;
 
 import com.comix.db.DBConnection;
 
