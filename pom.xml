@@ -10,7 +10,7 @@
 
     <properties>
         <maven.compiler.source>15</maven.compiler.source>
-        <maven.compiler.target>15.0.2</maven.compiler.target>
+        <maven.compiler.target>15</maven.compiler.target>
 
         <maven.exec.version>1.6.0</maven.exec.version>
         <postgresql.version>42.3.2</postgresql.version>
