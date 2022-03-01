@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import javax.print.DocFlavor.STRING;
+
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
@@ -49,7 +51,8 @@ public class BuildDB {
             while((comic = csvReader.readNext()) != null){
                 Statement sql = connection.createStatement();
                 connection.setAutoCommit(true);
-                String sql_stmt = "INSERT INTO comix VALUES (series, issue, full_title, variant, publisher, release_date, format, added_date, creators) VALUES  (" + comic[0] + "," + comic[1] + "," + comic[2] + "," + comic[3] + "," + comic[4] + "," + comic[5] + "," + comic[6] + "," + comic[7] + "," + comic[8] + ");";
+                comic = checkEmpty(comic);
+                String sql_stmt = "INSERT INTO comix VALUES (series, issue, full_title, variant, publisher, release_date, format, added_date, creators) VALUES  (" + comic[0].toString() + "," + comic[1] + "," + comic[2] + "," + comic[3] + "," + comic[4] + "," + comic[5] + "," + comic[6] + "," + comic[7] + "," + comic[8] + ");";
                 sql.executeUpdate(sql_stmt);
                 // System.out.println(comic[3]);
                 sql.close();
@@ -58,6 +61,16 @@ public class BuildDB {
         }catch(Exception ie){
             ie.printStackTrace();
         }
+    }
+    public static String[] checkEmpty(String[] comic){
+        int x = 0;
+        for(String c : comic){
+            if (c == ""){
+                comic[x] = "empty";
+                x++;
+            }
+        }
+        return comic;
     }
 }
         
