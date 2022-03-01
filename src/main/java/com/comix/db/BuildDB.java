@@ -52,7 +52,7 @@ public class BuildDB {
                 Statement sql = connection.createStatement();
                 connection.setAutoCommit(true);
                 comic = checkEmpty(comic);
-                String sql_stmt = "INSERT INTO comix VALUES (series, issue, full_title, variant, publisher, release_date, format, added_date, creators) VALUES  (" + comic[0].toString() + "," + comic[1] + "," + comic[2] + "," + comic[3] + "," + comic[4] + "," + comic[5] + "," + comic[6] + "," + comic[7] + "," + comic[8] + ");";
+                String sql_stmt = "INSERT INTO comix VALUES (series, issue, full_title, variant, publisher, release_date, format, added_date, creators) VALUES  (" + comic[0].toString() + "," +  comic[1] + "," + comic[2] + "," + comic[3] + "," + comic[4] + "," + comic[5] + "," + comic[6] + "," + comic[7] + "," + comic[8] + ");";
                 sql.executeUpdate(sql_stmt);
                 // System.out.println(comic[3]);
                 sql.close();
