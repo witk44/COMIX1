@@ -1,13 +1,7 @@
 package com.comix.db;
 
 import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.sql.*;
-import java.util.Objects;
-import java.util.Scanner;
-
-import javax.print.DocFlavor.STRING;
 
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
