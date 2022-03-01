@@ -24,6 +24,7 @@ public class DBConnection {
         Yaml yaml = new Yaml();
         InputStream yamlFileStream = new FileInputStream("src/main/resources/yml/db.yml");
         Map<String, String> credentials = yaml.load(yamlFileStream);
+        yamlFileStream.close();
 
         // Make sure file contains required fields
         for (String field : CRED_FIELDS) {
